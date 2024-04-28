@@ -1,7 +1,9 @@
 package com.remesasapi.modelo;
 
-import com.remesasapi.enumerables.TipoDocumento;
-import jakarta.persistence.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -12,12 +14,10 @@ import lombok.ToString;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
-public class Cliente {
+public class Moneda {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Integer idCliente;
+    private Integer idMoneda;
     private String nombre;
-    private String apellido;
-    private String documento;
-    private Integer tipo;
+    private String codigo;
 }
