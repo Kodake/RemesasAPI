@@ -7,6 +7,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class MonedaServicio implements IMonedaServicio {
     @Autowired
@@ -15,6 +17,11 @@ public class MonedaServicio implements IMonedaServicio {
     @Override
     public Page<Moneda> listarPaginado(Pageable pageable) {
         return monedaRepositorio.findAll(pageable);
+    }
+
+    @Override
+    public List<Moneda> listar() {
+        return monedaRepositorio.findAll();
     }
 
     @Override

@@ -1,7 +1,6 @@
 package com.remesasapi.controlador;
 
 import com.remesasapi.modelo.Cliente;
-import com.remesasapi.modelo.Moneda;
 import com.remesasapi.servicio.IClienteServicio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;

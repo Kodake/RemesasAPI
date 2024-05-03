@@ -1,7 +1,6 @@
 package com.remesasapi.controlador;
 
 import com.remesasapi.excepcion.RecursoNoEncontradoExcepcion;
-import com.remesasapi.modelo.Cliente;
 import com.remesasapi.modelo.Moneda;
 import com.remesasapi.servicio.IMonedaServicio;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +12,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @RestController
@@ -27,6 +27,11 @@ public class MonedaControlador {
                                              @RequestParam(defaultValue = "5") int pageSize) {
         Pageable pageable = PageRequest.of(pageNumber, pageSize);
         return monedaServicio.listarPaginado(pageable);
+    }
+
+    @GetMapping("/monedas/listar")
+    public List<Moneda> listar() {
+        return monedaServicio.listar();
     }
 
     @GetMapping("/monedas/{id}")

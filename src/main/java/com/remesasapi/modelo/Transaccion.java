@@ -5,8 +5,11 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
+import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.UuidGenerator;
 
 import java.time.LocalDate;
+import java.util.UUID;
 
 @Entity
 @Data
@@ -17,6 +20,8 @@ public class Transaccion {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idTransaccion;
+    @UuidGenerator
+    private String codigo;
     @ManyToOne
     @JoinColumn(name = "id_cliente_origen", referencedColumnName = "idCliente")
     private Cliente clienteOrigen;
@@ -28,5 +33,5 @@ public class Transaccion {
     @JoinColumn(name = "id_moneda", referencedColumnName = "idMoneda")
     private Moneda moneda;
     private LocalDate fecha;
-    private boolean esRetirado;
+    private boolean retirado;
 }

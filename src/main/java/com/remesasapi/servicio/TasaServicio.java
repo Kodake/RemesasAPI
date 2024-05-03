@@ -7,6 +7,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class TasaServicio implements ITasaServicio {
     @Autowired
@@ -15,6 +17,11 @@ public class TasaServicio implements ITasaServicio {
     @Override
     public Page<Tasa> listarPaginado(Pageable pageable) {
         return tasaRepositorio.findAll(pageable);
+    }
+
+    @Override
+    public List<Tasa> listar() {
+        return tasaRepositorio.findAll();
     }
 
     @Override
