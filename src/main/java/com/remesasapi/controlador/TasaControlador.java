@@ -15,6 +15,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("api/v1/remesas")
@@ -43,8 +44,19 @@ public class TasaControlador {
     }
 
     @GetMapping("/tasas/listar")
-    public List<Tasa> listar() {
-        return tasaServicio.listar();
+    public List<GetTasaDTO> listar() {
+        List<Tasa> tasas = tasaServicio.listar();
+
+        List<GetTasaDTO> tasaDTO = tasas.stream()
+                .map(tasa -> {
+                    GetTasaDTO getTasaDTO = modelMapper.map(tasa, GetTasaDTO.class);
+                    getTasaDTO.setMonedaOrigen(tasa.getMonedaOrigen().getNombre() + " - " + tasa.getMonedaOrigen().getCodigo());
+                    getTasaDTO.setMonedaDestino(tasa.getMonedaDestino().getNombre() + " - " + tasa.getMonedaDestino().getCodigo());
+                    return getTasaDTO;
+                })
+                .collect(Collectors.toList());
+
+        return tasaDTO;
     }
 
     @GetMapping("/tasas/{id}")

@@ -7,10 +7,17 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class ClienteServicio implements IClienteServicio {
     @Autowired
     private IClienteRepositorio clienteRepositorio;
+
+    @Override
+    public List<Cliente> listar() {
+        return clienteRepositorio.findAll();
+    }
 
     @Override
     public Page<Cliente> listarPaginado(Pageable pageable) {

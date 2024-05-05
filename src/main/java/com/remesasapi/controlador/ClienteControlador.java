@@ -10,6 +10,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("api/v1/remesas")
 @CrossOrigin(value = "http://localhost:5173")
@@ -22,6 +24,11 @@ public class ClienteControlador {
                                        @RequestParam(defaultValue = "5") int pageSize) {
         Pageable pageable = PageRequest.of(pageNumber, pageSize);
         return clienteServicio.listarPaginado(pageable);
+    }
+
+    @GetMapping("/clientes/listar")
+    public List<Cliente> listar() {
+        return clienteServicio.listar();
     }
 
     @GetMapping("/clientes/{id}")
