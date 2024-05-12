@@ -1,6 +1,5 @@
 package com.remesasapi.modelo;
 
-import com.remesasapi.enumerables.TipoDocumento;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
